@@ -53,7 +53,7 @@ class HdyHttpRequest {
     uri = Uri(
         scheme: scheme ?? httpConfig.scheme,
         host: host ?? httpConfig.host,
-        port: port,
+        port: port ?? httpConfig.port,
         path: path,
         queryParameters: queryParameters,
         query: query);
