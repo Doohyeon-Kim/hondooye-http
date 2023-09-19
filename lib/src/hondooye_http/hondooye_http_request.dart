@@ -38,10 +38,15 @@ class HdyHttpRequest {
     return headers!;
   }
 
-  Map<String, String> generateMultipartHeaders({String? token}) {
+  Map<String, String> generateMultipartHeaders({String? token, List<Map<String, String>>? headerList}) {
     headers = {'Content-Type': 'multipart/form-data'};
     if (token != null) {
       headers!.addAll(_generateAuthorizationHeader(token));
+    }
+    if (headerList != null) {
+      for (Map<String, String> header in headerList) {
+        headers!.addAll(header);
+      }
     }
     return headers!;
   }
