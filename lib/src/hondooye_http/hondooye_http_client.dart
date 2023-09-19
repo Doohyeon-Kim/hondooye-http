@@ -27,11 +27,12 @@ class HdyHttpClient {
       int? port,
       Map<String, dynamic>? queryParameters,
       String? query,
-      String? token}) async {
+      String? token,
+      List<Map<String, String>>? headerList}) async {
     final Uri uri = this.request.generateUri(
         path: path, port: port, queryParameters: queryParameters, query: query);
     final Map<String, String> headers =
-        this.request.generateHeaders(token: token);
+        this.request.generateHeaders(token: token, headerList: headerList);
     http.Request request = this.request.generateRequest(
         method: HdyHttpConst.method.get, headers: headers, uri: uri);
     Logger.httpRequest(httpRequest: request);

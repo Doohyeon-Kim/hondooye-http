@@ -44,25 +44,20 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: ElevatedButton(
           onPressed: () async {
-            final HdyHttp yourHttp =
-                HdyHttpUtils.generateHttp(scheme: "https", host: 'api.agify.io');
+            final HdyHttp yourHttp = HdyHttpUtils.generateHttp(scheme: "https", host: 'api.agify.io', port: 443);
             final HdyHttp yourHttp2 = HdyHttpUtils.generateHttp(
-                scheme: "https",
-                host: 'api.agify.io',
-                jsonDecodingOption: JsonDecodingOption.noOption);
+                scheme: "https", host: 'api.agify.io', jsonDecodingOption: JsonDecodingOption.noOption, port: 443);
             final HdyHttp yourHttp3 = HdyHttpUtils.generateHttp(
-                scheme: "https",
-                host: 'api.agify.io',
-                jsonDecodingOption: JsonDecodingOption.utf8);
-            final HdyHttp yourHttp4 =
-                HdyHttpUtils.generateHttp(scheme: "https", host: 'httpbin.org');
+                scheme: "https", host: 'api.agify.io', jsonDecodingOption: JsonDecodingOption.utf8, port: 443);
+            final HdyHttp yourHttp4 = HdyHttpUtils.generateHttp(scheme: "https", host: 'httpbin.org', port: 443);
 
-            await yourHttp.client
-                .get(path: '', queryParameters: {"name": "dhkim"});
-            await yourHttp2.client.external(
-                uriAddress: 'https://api.agify.io?name=dhkim', method: "GET");
-            await yourHttp3.client.external(
-                uriAddress: 'https://api.agify.io?name=dhkim', method: "GET");
+            await yourHttp.client.get(path: '', queryParameters: {
+              "name": "dhkim"
+            }, headerList: [
+              {"header1": "header1", "header2": "header2"}
+            ]);
+            await yourHttp2.client.external(uriAddress: 'https://api.agify.io?name=dhkim', method: "GET");
+            await yourHttp3.client.external(uriAddress: 'https://api.agify.io?name=dhkim', method: "GET");
             await yourHttp4.client.get(path: 'get');
             await yourHttp4.client.post(path: 'post', body: {});
             await yourHttp4.client.put(path: 'put', body: {});

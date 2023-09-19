@@ -21,16 +21,19 @@ class HdyHttpRequest {
   }
 
   Map<String, String> _generateAuthorizationHeader(String token) {
-    final Map<String, String> authorizationHeader = {
-      'Authorization': "${HdyHttpConst.tokenType.bearer} $token"
-    };
+    final Map<String, String> authorizationHeader = {'Authorization': "${HdyHttpConst.tokenType.bearer} $token"};
     return authorizationHeader;
   }
 
-  Map<String, String> generateHeaders({String? token}) {
+  Map<String, String> generateHeaders({String? token, List<Map<String, String>>? headerList}) {
     headers = _generateBaseHeaders();
     if (token != null) {
       headers!.addAll(_generateAuthorizationHeader(token));
+    }
+    if (headerList != null) {
+      for (Map<String, String> header in headerList) {
+        headers!.addAll(header);
+      }
     }
     return headers!;
   }
@@ -60,8 +63,7 @@ class HdyHttpRequest {
     return uri!;
   }
 
-  Uri externalUri(
-      {required String uriAddress, Map<String, dynamic>? queryParameters}) {
+  Uri externalUri({required String uriAddress, Map<String, dynamic>? queryParameters}) {
     if (queryParameters == null) {
       uri = Uri.parse(uriAddress);
     } else {
@@ -71,10 +73,7 @@ class HdyHttpRequest {
   }
 
   http.Request generateRequest(
-      {required String method,
-      required Map<String, String> headers,
-      required Uri uri,
-      Map<String, dynamic>? body}) {
+      {required String method, required Map<String, String> headers, required Uri uri, Map<String, dynamic>? body}) {
     http.Request request = http.Request(method, uri);
     if (body != null) {
       request.body = jsonEncode(body);
