@@ -186,7 +186,7 @@ class HdyHttpClient {
       String? token,
       List<Map<String, String>>? headerList}) async {
     final Uri uri = this.request.custom(uriAddress: uriAddress, queryParameters: queryParameters);
-    final Map<String, String> headers = this.request.generateHeaders(token: token);
+    final Map<String, String> headers = this.request.generateHeaders(token: token, headerList: headerList);
     http.Request request = this.request.generateRequest(method: method, headers: headers, body: body, uri: uri);
     Logger.httpRequest(httpRequest: request);
 

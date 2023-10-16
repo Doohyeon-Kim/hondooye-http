@@ -1,4 +1,4 @@
-# 0.0.10
+# 0.0.11
 
-add feature related in jsonDecode for custom http client.
+Add header list generator for custom method of http client.
 
