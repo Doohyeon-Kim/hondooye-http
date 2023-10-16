@@ -87,17 +87,17 @@ packages:
     dependency: "direct main"
     description:
       name: hondooye_error_handler
-      sha256: f3fd15158eb3ece27da50bff46d024a06af807cc77c3d7386cc80624f64eb57c
+      sha256: "80162de14704915d9d411f660c1b891d9e198c07cd68966635669859d03883a6"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.2"
+    version: "0.0.3"
   hondooye_http:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "0.0.3"
+    version: "0.0.5"
   hondooye_logger:
     dependency: transitive
     description:

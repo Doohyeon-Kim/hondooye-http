@@ -1,4 +1,4 @@
-# 0.0.4
+# 0.0.6
 
-support customizable header +
+add option for http client to handle response directly.
 

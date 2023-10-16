@@ -57,9 +57,10 @@ class _MyHomePageState extends State<MyHomePage> {
               {"header1": "header1", "header2": "header2"}
             ]);
             await yourHttp2.client.external(uriAddress: 'https://api.agify.io?name=dhkim', method: "GET");
-            await yourHttp3.client.external(uriAddress: 'https://api.agify.io?name=dhkim', method: "GET");
+            await yourHttp3.client
+                .external(uriAddress: 'https://api.agify.io?name=dhkim', method: "GET");
             await yourHttp4.client.get(path: 'get');
-            await yourHttp4.client.post(path: 'post', body: {});
+            await yourHttp4.client.post(path: 'post', body: {}, handleResponseDirectly: true);
             await yourHttp4.client.put(path: 'put', body: {});
             await yourHttp4.client.delete(path: 'delete', body: {});
             await yourHttp4.client.patch(path: 'patch', body: {});

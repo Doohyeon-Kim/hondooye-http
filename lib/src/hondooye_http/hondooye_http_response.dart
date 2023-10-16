@@ -92,6 +92,17 @@ class HdyHttpResponse {
             detail: responseJson['error']['detail']);
         throw HdyException(fvError);
 
+      case 422: // Unprocessable Entity
+        responseJson = httpConfig.jsonDecodingOption == HdyHttpConst.jsonEncodingOption.utf8
+            ? HdyHttpUtils.jsonDecodeFromUTF8(response: response)
+            : HdyHttpUtils.jsonDecode(response: response);
+        fvError = HdyErrors(
+            type: responseJson['error']['type'],
+            message: responseJson['error']['message'],
+            title: responseJson['error']['title'],
+            detail: responseJson['error']['detail']);
+        throw HdyException(fvError);
+
       case 500: // Internal Server Error
         responseJson = httpConfig.jsonDecodingOption == HdyHttpConst.jsonEncodingOption.utf8
             ? HdyHttpUtils.jsonDecodeFromUTF8(response: response)
@@ -108,6 +119,17 @@ class HdyHttpResponse {
             ? HdyHttpUtils.jsonDecodeFromUTF8(response: response)
             : HdyHttpUtils.jsonDecode(response: response);
         fvError = HdyErrors.serviceUnavailable(
+            type: responseJson['error']['type'],
+            message: responseJson['error']['message'],
+            title: responseJson['error']['title'],
+            detail: responseJson['error']['detail']);
+        throw HdyException(fvError);
+
+      case 520: // Service Unavailable
+        responseJson = httpConfig.jsonDecodingOption == HdyHttpConst.jsonEncodingOption.utf8
+            ? HdyHttpUtils.jsonDecodeFromUTF8(response: response)
+            : HdyHttpUtils.jsonDecode(response: response);
+        fvError = HdyErrors.unknownError(
             type: responseJson['error']['type'],
             message: responseJson['error']['message'],
             title: responseJson['error']['title'],

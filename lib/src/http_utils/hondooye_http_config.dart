@@ -4,7 +4,7 @@ class HdyHttpConfig {
   HdyHttpConfig({
     this.scheme = "https",
     this.host = "localhost",
-    this.port = 3000,
+    this.port = 443,
     this.contentType = "application/json",
     this.tokenType = "Bearer ",
     this.networkTimeLimit = const Duration(milliseconds: 20000),
