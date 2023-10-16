@@ -68,7 +68,7 @@ class HdyHttpRequest {
     return uri!;
   }
 
-  Uri externalUri({required String uriAddress, Map<String, dynamic>? queryParameters}) {
+  Uri custom({required String uriAddress, Map<String, dynamic>? queryParameters}) {
     if (queryParameters == null) {
       uri = Uri.parse(uriAddress);
     } else {
