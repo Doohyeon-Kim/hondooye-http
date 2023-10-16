@@ -1,4 +1,4 @@
-# 0.0.9
+# 0.0.10
 
-add feature what can add header list into custom function of http client.
+add feature related in jsonDecode for custom http client.
 

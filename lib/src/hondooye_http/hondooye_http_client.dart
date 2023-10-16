@@ -7,6 +7,7 @@ import 'package:hondooye_logger/hondooye_logger.dart';
 
 import '../constant/http_constant.dart';
 import '../http_utils/hondooye_http_config.dart';
+import '../http_utils/hondooye_http_utils.dart';
 import 'hondooye_http_request.dart';
 import 'hondooye_http_response.dart';
 
@@ -191,7 +192,10 @@ class HdyHttpClient {
 
     try {
       final streamedResponse = await request.send().timeout(httpConfig.networkTimeLimit);
-      return await http.Response.fromStream(streamedResponse);
+      final response = await http.Response.fromStream(streamedResponse);
+      return httpConfig.jsonDecodingOption == HdyHttpConst.jsonEncodingOption.utf8
+          ? HdyHttpUtils.jsonDecodeFromUTF8(response: response)
+          : HdyHttpUtils.jsonDecode(response: response);
     } on TimeoutException {
       HdyException.requestTimeout();
     } on HdyException {
