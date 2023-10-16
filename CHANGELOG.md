@@ -1,4 +1,4 @@
-# 0.0.6
+# 0.0.7
 
-add option for http client to handle response directly.
+changed function name from external to custom.
 
