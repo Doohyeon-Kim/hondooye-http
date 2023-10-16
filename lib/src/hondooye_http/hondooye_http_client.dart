@@ -190,8 +190,7 @@ class HdyHttpClient {
 
     try {
       final streamedResponse = await request.send().timeout(httpConfig.networkTimeLimit);
-      final result = await http.Response.fromStream(streamedResponse);
-      return response.get(result);
+      return await http.Response.fromStream(streamedResponse);
     } on TimeoutException {
       HdyException.requestTimeout();
     } on HdyException {

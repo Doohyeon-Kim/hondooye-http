@@ -1,4 +1,4 @@
-# 0.0.7
+# 0.0.8
 
-changed function name from external to custom.
+custom function of http client returns http.Response type now.
 

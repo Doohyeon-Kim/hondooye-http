@@ -1,4 +1,3 @@
-
 import 'package:hondooye_error_handler/hondooye_error_handler.dart';
 import 'package:hondooye_logger/hondooye_logger.dart';
 import 'package:http/http.dart';
@@ -12,7 +11,7 @@ class HdyHttpResponse {
 
   final HdyHttpConfig httpConfig;
 
-   dynamic get(Response response) {
+  dynamic get(Response response) {
     late dynamic responseJson;
     final HdyError? fvError;
 
