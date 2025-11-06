@@ -8,7 +8,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({super.key, required this.title});
   final String title;
 
   @override
@@ -44,28 +44,37 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: ElevatedButton(
           onPressed: () async {
-            final HdyHttp yourHttp = HdyHttpUtils.generateHttp(scheme: "https", host: 'api.agify.io', port: 443);
+            final HdyHttp yourHttp = HdyHttpUtils.generateHttp(scheme: "https", host: 'jsonplaceholder.typicode.com', port: 443);
             final HdyHttp yourHttp2 = HdyHttpUtils.generateHttp(
-                scheme: "https", host: 'api.agify.io', jsonDecodingOption: JsonDecodingOption.noOption, port: 443);
+                scheme: "https", host: 'jsonplaceholder.typicode.com', jsonDecodingOption: JsonDecodingOption.noOption, port: 443);
             final HdyHttp yourHttp3 = HdyHttpUtils.generateHttp(
-                scheme: "https", host: 'api.agify.io', jsonDecodingOption: JsonDecodingOption.utf8, port: 443);
-            final HdyHttp yourHttp4 = HdyHttpUtils.generateHttp(scheme: "https", host: 'httpbin.org', port: 443);
+                scheme: "https", host: 'jsonplaceholder.typicode.com', jsonDecodingOption: JsonDecodingOption.utf8, port: 443);
+            final HdyHttp yourHttp4 = HdyHttpUtils.generateHttp(scheme: "https", host: 'jsonplaceholder.typicode.com', port: 443);
 
-            await yourHttp.client.get(path: '', queryParameters: {
-              "name": "dhkim"
-            }, headerList: [
+            await yourHttp.client.get(path: '/posts/1', headerList: [
               {"header1": "header1", "header2": "header2"}
             ]);
-            await yourHttp2.client.custom(uriAddress: 'https://api.agify.io?name=dhkim', method: "GET");
-            await yourHttp3.client.custom(uriAddress: 'https://api.agify.io?name=dhkim', method: "GET");
-            await yourHttp4.client.get(path: 'get');
+            await yourHttp2.client.custom(uriAddress: 'https://jsonplaceholder.typicode.com/posts/1', method: "GET");
+            await yourHttp3.client.custom(uriAddress: 'https://jsonplaceholder.typicode.com/posts/1', method: "GET");
+            await yourHttp4.client.get(path: '/posts/1');
             await yourHttp4.client.post(
-              path: 'post',
-              body: {},
+              path: '/posts',
+              body: {
+                "title": "Test Post",
+                "body": "This is a test",
+                "userId": 1
+              },
             );
-            await yourHttp4.client.put(path: 'put', body: {});
-            await yourHttp4.client.delete(path: 'delete', body: {});
-            await yourHttp4.client.patch(path: 'patch', body: {});
+            await yourHttp4.client.put(path: '/posts/1', body: {
+              "id": 1,
+              "title": "Updated Post",
+              "body": "This is an updated test",
+              "userId": 1
+            });
+            await yourHttp4.client.delete(path: '/posts/1', body: {});
+            await yourHttp4.client.patch(path: '/posts/1', body: {
+              "title": "Patched Post"
+            });
           },
           child: const Text("Test"),
         ),

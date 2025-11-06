@@ -1,7 +1,7 @@
 import '../constant/http_constant.dart';
 
 class HdyHttpConfig {
-  HdyHttpConfig({
+  const HdyHttpConfig({
     this.scheme = "https",
     this.host = "localhost",
     this.port = 443,

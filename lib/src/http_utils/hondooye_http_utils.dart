@@ -16,11 +16,11 @@ class HdyHttpUtils {
         : data;
   }
 
-  static jsonDecode({required http.Response response}) {
+  static dynamic jsonDecode({required http.Response response}) {
     return convert.jsonDecode(response.body);
   }
 
-  static jsonDecodeFromUTF8({required http.Response response}) {
+  static dynamic jsonDecodeFromUTF8({required http.Response response}) {
     return convert.jsonDecode(convert.utf8.decode(response.bodyBytes));
   }
 

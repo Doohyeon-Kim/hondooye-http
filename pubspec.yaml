@@ -1,22 +1,22 @@
 name: hondooye_http
 description: A useful http package.
-version: 0.0.11
+version: 1.0.0
 repository: "https://github.com/Doohyeon-Kim/hondooye-http.git"
 
 environment:
-  sdk: ">=2.17.0 <4.0.0"
-  flutter: ">=1.17.0"
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.13.4
-  hondooye_error_handler: ^0.0.3
-  hondooye_logger: ^0.0.2
+  http: ^1.5.0
+  hondooye_error_handler: ^1.0.0
+  hondooye_logger: ^1.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.1
+  flutter_lints: ^6.0.0
 
 flutter:

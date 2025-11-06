@@ -13,7 +13,7 @@ class HdyHttpResponse {
 
   dynamic get(Response response) {
     late dynamic responseJson;
-    final HdyError? fvError;
+    HdyError? fvError;
 
     switch (response.statusCode) {
       case 200: // OK
